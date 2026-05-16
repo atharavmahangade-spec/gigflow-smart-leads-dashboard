@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: #f8f8fc;
+    --bg-card: #ffffff;
+    --bg-subtle: #f0f0f8;
+    --border: #e2e2f0;
+    --text: #0d0d1f;
+    --text-muted: #6b6b8a;
+    --brand: #1a4dff;
+    --brand-light: #dce8ff;
+  }
+
+  .dark {
+    --bg: #06060f;
+    --bg-card: #0d0d1f;
+    --bg-subtle: #16162a;
+    --border: #1e1e3a;
+    --text: #f0f0f8;
+    --text-muted: #8888aa;
+    --brand: #487dff;
+    --brand-light: #0d1a40;
+  }
+
+  * {
+    @apply border-[var(--border)];
+  }
+
+  body {
+    @apply bg-[var(--bg)] text-[var(--text)] font-body antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-[var(--bg-card)] border border-[var(--border)] rounded-2xl;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-xl 
+           bg-brand-500 hover:bg-brand-600 dark:bg-brand-400 dark:hover:bg-brand-500
+           text-white font-medium text-sm
+           transition-all duration-150 active:scale-95
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-xl
+           text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--bg-subtle)]
+           font-medium text-sm transition-all duration-150;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-xl
+           text-red-500 hover:bg-red-500/10
+           font-medium text-sm transition-all duration-150;
+  }
+
+  .input {
+    @apply w-full px-4 py-2.5 rounded-xl border border-[var(--border)]
+           bg-[var(--bg-subtle)] text-[var(--text)]
+           placeholder:text-[var(--text-muted)]
+           focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500
+           transition-all duration-150 text-sm;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-[var(--text-muted)] mb-1.5;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { @apply bg-[var(--border)] rounded-full; }
+::-webkit-scrollbar-thumb:hover { @apply bg-[var(--text-muted)]; }
+
+/* Selection */
+::selection { @apply bg-brand-500/20 text-brand-500; }
