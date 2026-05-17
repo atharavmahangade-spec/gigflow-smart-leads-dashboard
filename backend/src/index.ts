@@ -19,7 +19,10 @@ app.use(helmet());
 
 app.use(
   cors({
-    origin: true,
+    origin: [
+      'https://gigflow-frontend-ely0.onrender.com',
+      'http://localhost:5173'
+    ],
     credentials: true,
   })
 );
